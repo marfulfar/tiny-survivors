@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/units/knight/knight.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://game/units/models/knight.tscn" id="2_model"]
+[ext_resource type="PackedScene" path="res://assets/characters/kaykit_adventurers/props/sword_1handed.gltf" id="3_sword"]
+[ext_resource type="PackedScene" path="res://assets/characters/kaykit_adventurers/props/shield_badge_color.gltf" id="4_shield"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.6
+
+[node name="Knight" type="CharacterBody3D"]
+script = ExtResource("1_script")
+display_name = "Knight"
+max_health = 15
+strength = 5
+armour = 6
+move_range = 4
+walk_speed = 4.5
+health_bar_height = 3.0
+aim_height = 0.9
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Model" parent="." instance=ExtResource("2_model")]
+
+[node name="WeaponSlot" type="BoneAttachment3D" parent="Model/Model/Rig_Medium/Skeleton3D"]
+bone_name = "handslot.r"
+
+[node name="Sword" parent="Model/Model/Rig_Medium/Skeleton3D/WeaponSlot" instance=ExtResource("3_sword")]
+
+[node name="ShieldSlot" type="BoneAttachment3D" parent="Model/Model/Rig_Medium/Skeleton3D"]
+bone_name = "handslot.l"
+
+[node name="Shield" parent="Model/Model/Rig_Medium/Skeleton3D/ShieldSlot" instance=ExtResource("4_shield")]

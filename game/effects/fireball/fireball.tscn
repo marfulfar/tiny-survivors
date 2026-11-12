@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://durb35fyv7cbb"]
+
+[ext_resource type="Script" uid="uid://bq1amoi2umghj" path="res://game/effects/fireball/fireball.gd" id="1_1gl40"]
+[ext_resource type="PackedScene" uid="uid://dyixakcmbhsyl" path="res://assets/effects/fireball/fireball.glb" id="2_cb14k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7kba2"]
+radius = 0.2
+
+[node name="Fireball" type="Area3D" unique_id=682090464]
+collision_layer = 0
+script = ExtResource("1_1gl40")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=255619404]
+shape = SubResource("SphereShape3D_7kba2")
+
+[node name="Model" parent="." unique_id=737399253 instance=ExtResource("2_cb14k")]
+
+[node name="Light" type="OmniLight3D" parent="." unique_id=2004781534]
+light_color = Color(1, 0.5411765, 0.16470589, 1)
+light_energy = 3.0
+omni_range = 4.0

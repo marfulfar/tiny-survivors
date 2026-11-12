@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bfim3g1j4agvb"]
+
+[ext_resource type="Script" uid="uid://c64mm1e16sea2" path="res://game/units/goblin/goblin_corpse.gd" id="1_3jln2"]
+[ext_resource type="PackedScene" uid="uid://lnve3tqqyal4" path="res://assets/characters/goblin/goblin_hd_corpse.glb" id="2_3jln2"]
+
+[node name="GoblinCorpse" type="Node3D" unique_id=831640301]
+script = ExtResource("1_3jln2")
+
+[node name="Model" parent="." unique_id=86680458 instance=ExtResource("2_3jln2")]

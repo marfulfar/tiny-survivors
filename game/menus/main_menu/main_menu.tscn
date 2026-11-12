@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/menus/main_menu/main_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://game/missions/forest_clearing/scenery.tscn" id="2_scenery"]
+[ext_resource type="PackedScene" path="res://game/units/models/mage.tscn" id="3_mage"]
+[ext_resource type="PackedScene" path="res://game/units/models/skeleton_minion.tscn" id="4_minion"]
+
+[sub_resource type="ProceduralSkyMaterial" id="Sky_mat"]
+sky_top_color = Color(0.3647059, 0.56078434, 0.8392157, 1)
+sky_horizon_color = Color(0.7882353, 0.8627451, 0.9372549, 1)
+ground_bottom_color = Color(0.56078434, 0.6509804, 0.7411765, 1)
+ground_horizon_color = Color(0.7882353, 0.8627451, 0.9372549, 1)
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("Sky_mat")
+
+[sub_resource type="Environment" id="Env_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+ambient_light_source = 3
+
+[sub_resource type="StandardMaterial3D" id="Grass_mat"]
+albedo_color = Color(0.3529412, 0.5411765, 0.23529412, 1)
+roughness = 0.95
+
+[sub_resource type="PlaneMesh" id="Ground_mesh"]
+material = SubResource("Grass_mat")
+size = Vector2(80, 80)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_menu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_1")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.81915206, 0.43938506, -0.36868784, 0, 0.64278764, 0.76604444, 0.57357645, -0.62750685, 0.5265408, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("Ground_mesh")
+
+[node name="Scenery" parent="." instance=ExtResource("2_scenery")]
+
+[node name="Showcase" type="Node3D" parent="."]
+
+[node name="Mage" parent="Showcase" instance=ExtResource("3_mage")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -0.8, 0, 0.6)
+
+[node name="Minion" parent="Showcase" instance=ExtResource("4_minion")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1.6, 0, -1.2)
+
+[node name="Camera" type="Camera3D" parent="."]
+current = true
+fov = 55.0

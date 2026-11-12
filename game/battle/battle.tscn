@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://k3wpfl021c5f" path="res://game/battle/camera_rig.gd" id="1_camera"]
+[ext_resource type="Script" uid="uid://dj6frecv4nlmd" path="res://game/battle/grid_board.gd" id="2_grid"]
+[ext_resource type="Script" uid="uid://b6lr02n45gqtj" path="res://game/battle/tactics_controller.gd" id="3_tactics"]
+[ext_resource type="Script" path="res://game/battle/battle.gd" id="4_battle"]
+[ext_resource type="Script" path="res://game/battle/occlusion_fader.gd" id="5_fader"]
+
+[node name="Battle" type="Node3D"]
+script = ExtResource("4_battle")
+
+[node name="CameraRig" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 8.2, 5.7)
+current = true
+script = ExtResource("1_camera")
+max_distance = 30.0
+
+[node name="Grid" type="Node3D" parent="."]
+script = ExtResource("2_grid")
+
+[node name="Tactics" type="Node" parent="."]
+script = ExtResource("3_tactics")
+
+[node name="OcclusionFader" type="Node" parent="."]
+script = ExtResource("5_fader")

@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://digpa3sbfbhj8" path="res://game/units/wizard/wizard.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://game/units/models/mage.tscn" id="2_model"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.6
+
+[node name="Wizard" type="CharacterBody3D"]
+script = ExtResource("1_script")
+display_name = "Wizard"
+max_health = 20
+strength = 4
+armour = 4
+walk_speed = 5.0
+health_bar_height = 3.1
+aim_height = 0.9
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Model" parent="." instance=ExtResource("2_model")]

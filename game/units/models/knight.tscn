@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/characters/kaykit_adventurers/characters/Knight.glb" id="1_model"]
+[ext_resource type="AnimationLibrary" path="res://assets/characters/kaykit_adventurers/animations/Rig_Medium_General.glb" id="2_general"]
+[ext_resource type="AnimationLibrary" path="res://assets/characters/kaykit_adventurers/animations/Rig_Medium_MovementBasic.glb" id="3_movement"]
+
+[node name="Knight" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_model")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Model")
+libraries = {
+&"general": ExtResource("2_general"),
+&"movement": ExtResource("3_movement")
+}
+autoplay = &"general/Idle_A"
+playback_default_blend_time = 0.2
